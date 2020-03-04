@@ -171,10 +171,6 @@ public class DetailEventFragment extends Fragment {
             }
 
 
-            adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_assistants);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            vsuscriptos.setAdapter(adapter);
-
 //            for(int i = 0;i<suscriptos.size();++i){
 //                userRef = database.getReference("usuarios").child(suscriptos.get(i));
 //                getRegistToken();
@@ -186,7 +182,7 @@ public class DetailEventFragment extends Fragment {
             for (String key: event.getInteresados().keySet()){
                 if(event.getInteresados().get(key)){
                     userRefEmail = database.getReference("usuariostest").child(key).child("email");
-                    getInterestedEmails();
+                        getInterestedEmails();
                     interesados.add(key);
                     interesados_keys = interesados_keys + key + ",";
                 }
@@ -201,9 +197,6 @@ public class DetailEventFragment extends Fragment {
 //                Log.d("LUCSI","entre al for");
 //            }
 
-            adapter_interested = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_interested);
-            adapter_interested.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            vinteresados.setAdapter(adapter_interested);
 
             out.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -302,6 +295,9 @@ public class DetailEventFragment extends Fragment {
                 try{
                     emails_interested.add(dataSnapshot.getValue(String.class));
                     Log.d("LUCSI", "INTERESTED " + dataSnapshot.getValue(String.class));
+                    adapter_interested = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_interested);
+                    adapter_interested.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    vinteresados.setAdapter(adapter_interested);
                 }catch (Exception e){
                     Log.d("LUCSI", e.toString());
                 }
@@ -322,6 +318,9 @@ public class DetailEventFragment extends Fragment {
                 try{
                     emails_assistants.add(dataSnapshot.getValue(String.class));
                     Log.d("LUCSI", "ASSISTANT " + dataSnapshot.getValue(String.class));
+                    adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_assistants);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    vsuscriptos.setAdapter(adapter);
                 }catch (Exception e){
                     Log.d("LUCSI", e.toString());
                 }
@@ -625,8 +624,8 @@ public class DetailEventFragment extends Fragment {
             DatabaseReference eventRef = myRef.child(event.id);
             eventRef.updateChildren(update);
 //            update view
-            adapter_interested.add(user_id);
-            vinteresados.setAdapter(adapter_interested);
+//            adapter_interested.add(user_id);
+//            vinteresados.setAdapter(adapter_interested);
         }
         catch (Exception e){
             Log.d("LUCSI",e.toString());
@@ -646,8 +645,8 @@ public class DetailEventFragment extends Fragment {
             eventRef.updateChildren(update);
 
 //            update view
-            adapter.add(user_id);
-            vsuscriptos.setAdapter(adapter);
+//            adapter.add(user_id);
+//            vsuscriptos.setAdapter(adapter);
         }
         catch (Exception e){
             Log.d("LUCSI",e.toString());
