@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProyFinalDISMOV</string>
+    <string name="facebook_app_id">664918217656659</string>
+    <string name="fb_login_protocol_scheme">fb664918217656659</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoibHVjeTEyIiwiYSI6ImNrNnh5bTNnNjBsM2Qzbm52dDd1Njg0YzYifQ.7VCoSWol3Q_r9qIWPzqJXA</string>
+
+</resources>

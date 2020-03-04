@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="#FFF">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/lay_creador">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creador: "></TextView>
+
+        <TextView
+            android:id="@+id/creador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_suscriptos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_creador">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suscriptos: ">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/suscriptos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_interesados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_suscriptos">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Interesados: ">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/interesados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_dislikes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_interesados">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dislikes: "></TextView>
+
+        <TextView
+            android:id="@+id/dislikes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lay_dislikes">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre: "></TextView>
+
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_nombre">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitud: "></TextView>
+
+        <EditText
+            android:id="@+id/latitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_lng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_lat">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitud: "></TextView>
+
+        <EditText
+            android:id="@+id/longitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_fecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_lng">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha y hora: "></TextView>
+
+        <EditText
+            android:id="@+id/fechahora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="yyyy-MM-dd HH:mm"
+            android:inputType="datetime"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_tipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_fecha">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo: "></TextView>
+
+        <EditText
+            android:id="@+id/tipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_duracion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lay_tipo">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duracion: "></TextView>
+
+        <EditText
+            android:id="@+id/duracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lay_duracion">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripcion: "></TextView>
+
+        <EditText
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"></EditText>
+    </LinearLayout>
+
+
+     <LinearLayout
+         android:id="@+id/lay_buttons_top"
+         app:layout_constraintTop_toBottomOf="@id/lay_descripcion"
+         app:layout_constraintStart_toStartOf="parent"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="horizontal"
+         android:gravity="center">
+
+         <Button
+
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Guardar"
+             android:id="@+id/save_event">
+         </Button>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+        ></Button>
+
+         <Button
+
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Asistire"
+             android:id="@+id/going">
+         </Button>
+
+     </LinearLayout>
+
+     <LinearLayout
+         app:layout_constraintTop_toBottomOf="@+id/lay_buttons_top"
+         app:layout_constraintStart_toStartOf="parent"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="horizontal"
+         android:gravity="center">
+
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Como llegar"
+             android:id="@+id/directions">
+         </Button>
+
+         <Button
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Me interesa"
+             android:id="@+id/interested">
+         </Button>
+
+         <ImageButton
+             android:layout_width="50dp"
+             android:layout_height="50dp"
+             android:text="Dislike"
+             android:id="@+id/dislike"
+             android:src="@drawable/dislike"
+             android:scaleType="fitXY"
+             android:adjustViewBounds="true">
+         </ImageButton>
+
+     </LinearLayout>
+
+     <FrameLayout
+         android:id="@+id/container_popup"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         ></FrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
