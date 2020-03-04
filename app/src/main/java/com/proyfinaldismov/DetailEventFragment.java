@@ -67,7 +67,6 @@ public class DetailEventFragment extends Fragment {
     private ArrayAdapter<String> adapter,adapter_interested;
     private EventsDBHelper helper;
     private List<String> tokens;
-//    private List<String> uids = new ArrayList<>();
 
     @Nullable
     @Override
@@ -107,7 +106,7 @@ public class DetailEventFragment extends Fragment {
 
             database = FirebaseDatabase.getInstance();
 
-            creadorRef = database.getReference("usuariostest").child(event.getCreador()).child("email");
+            creadorRef = database.getReference("usuarios").child(event.getCreador()).child("email");
             creadorRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -129,40 +128,14 @@ public class DetailEventFragment extends Fragment {
             tokens = new ArrayList<>();
             for (String key : event.getSuscriptos().keySet()) {
                 if (event.getSuscriptos().get(key)){
-                    userRef = database.getReference("usuariostest").child(key).child("token");
+                    userRef = database.getReference("usuarios").child(key).child("token");
                     getRegistToken();
-                    userRefEmail = database.getReference("usuariostest").child(key).child("email");
+                    userRefEmail = database.getReference("usuarios").child(key).child("email");
                     getAssistantEmails();
                     suscriptos.add(key); //suscriptos -> list of user uids strings (for spinner)}
                     suscriptos_keys = suscriptos_keys + key + ","; //suscriptos_keys -> comma-separated string containing user uids (for SQLite database)
                 }
             }
-
-//            Log.d("LUCSI","event id its " + event.getId());
-//            userRefEmail = database.getReference("eventos").child(event.getId()).child("suscriptos");
-//            userRefEmail.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    for (DataSnapshot keyNode : dataSnapshot.getChildren()){
-//                        if (keyNode.getValue(Boolean.class)){
-//                            Log.d("LUCSI","reading from database " + keyNode.getKey());
-//                            emails_assistants.add(keyNode.getKey());
-//                            suscriptos_keys = suscriptos_keys + keyNode.getKey() + ",";
-//
-//                        }
-//
-//                    }
-
-//                }
-
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-
-
-
 
             if (suscriptos.contains(user_id)){
 //            if(emails_assistants.contains(user_email)){
@@ -181,8 +154,8 @@ public class DetailEventFragment extends Fragment {
 //            emails_interested = new ArrayList<>();
             for (String key: event.getInteresados().keySet()){
                 if(event.getInteresados().get(key)){
-                    userRefEmail = database.getReference("usuariostest").child(key).child("email");
-                        getInterestedEmails();
+                    userRefEmail = database.getReference("usuarios").child(key).child("email");
+                    getInterestedEmails();
                     interesados.add(key);
                     interesados_keys = interesados_keys + key + ",";
                 }
@@ -293,11 +266,14 @@ public class DetailEventFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
-                    emails_interested.add(dataSnapshot.getValue(String.class));
-                    Log.d("LUCSI", "INTERESTED " + dataSnapshot.getValue(String.class));
-                    adapter_interested = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_interested);
-                    adapter_interested.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    vinteresados.setAdapter(adapter_interested);
+                    if(dataSnapshot.getValue(String.class)!=null){
+                        emails_interested.add(dataSnapshot.getValue(String.class));
+                        Log.d("LUCSI", "INTERESTED " + dataSnapshot.getValue(String.class));
+                        adapter_interested = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_interested);
+                        adapter_interested.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        vinteresados.setAdapter(adapter_interested);
+                    }
+
                 }catch (Exception e){
                     Log.d("LUCSI", e.toString());
                 }
@@ -316,11 +292,14 @@ public class DetailEventFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
-                    emails_assistants.add(dataSnapshot.getValue(String.class));
-                    Log.d("LUCSI", "ASSISTANT " + dataSnapshot.getValue(String.class));
-                    adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_assistants);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    vsuscriptos.setAdapter(adapter);
+                    if (dataSnapshot.getValue(String.class)!=null){
+                        emails_assistants.add(dataSnapshot.getValue(String.class));
+                        Log.d("LUCSI", "ASSISTANT " + dataSnapshot.getValue(String.class));
+                        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, emails_assistants);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        vsuscriptos.setAdapter(adapter);
+                    }
+
                 }catch (Exception e){
                     Log.d("LUCSI", e.toString());
                 }
@@ -498,8 +477,11 @@ public class DetailEventFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
-                    tokens.add(dataSnapshot.getValue(String.class));
-                    Log.d("LUCSI", "TOKEN " + dataSnapshot.getValue(String.class));
+                    if (dataSnapshot.getValue(String.class) != null) {
+                        tokens.add(dataSnapshot.getValue(String.class));
+                        Log.d("LUCSI", "TOKEN " + dataSnapshot.getValue(String.class));
+                    }
+
                 }catch (Exception e){
                     Log.d("LUCSI", e.toString());
                 }

@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
 //                                Toast.makeText(getApplicationContext(),"Registro exitoso",Toast.LENGTH_LONG).show();
                                     //HERE we can save email of user in "usuarios"
                                     database = FirebaseDatabase.getInstance();
-                                    userRef = database.getReference("usuariostest");
+                                    userRef = database.getReference("usuarios");
                                     userRef.child(mAuth.getUid()).child("email").setValue(mAuth.getCurrentUser().getEmail());
                                 }catch (Exception e){
                                     Log.d("LUCSI",e.toString());

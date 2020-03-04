@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //here we can extract email from user
                             database = FirebaseDatabase.getInstance();
-                            userRef = database.getReference("usuariostest");
+                            userRef = database.getReference("usuarios");
                             userRef.child(mAuth.getUid()).child("email").setValue(user.getEmail());
                             Intent i = new Intent(getApplicationContext(),MainPage.class);
                             startActivity(i);
@@ -193,7 +193,7 @@ public class LoginActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     //HERE we can extract email
                     database = FirebaseDatabase.getInstance();
-                    userRef = database.getReference("usuariostest");
+                    userRef = database.getReference("usuarios");
                     userRef.child(mAuth.getUid()).child("email").setValue(user.getEmail());
                     Intent i = new Intent(getApplicationContext(), MainPage.class);
                     startActivity(i);

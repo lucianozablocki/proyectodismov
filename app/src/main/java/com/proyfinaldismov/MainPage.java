@@ -107,7 +107,7 @@ public class MainPage extends AppCompatActivity implements OnMapReadyCallback, P
                         try{
                             Log.d("LUCSI", "REGISTRATION TOKEN ITS: " + token);
                             database = FirebaseDatabase.getInstance();
-                            DatabaseReference userRef = database.getReference("usuariostest");
+                            DatabaseReference userRef = database.getReference("usuarios");
                             userRef.child(mAuth.getUid()).child("token").setValue(token);
                         }
                         catch(Exception e){
