@@ -122,8 +122,6 @@ public class DetailEventFragment extends Fragment {
                 }
             });
 
-//            Log.d("LUCSI","El creador de este evento es: " + creador_email);
-//            vcreador.setText(creador_email);
 
             suscriptos = new ArrayList<>();
             suscriptos_keys = "";
@@ -166,8 +164,8 @@ public class DetailEventFragment extends Fragment {
 
 
 
-//            if (suscriptos.contains(user_email)){
-            if(emails_assistants.contains(user_email)){
+            if (suscriptos.contains(user_id)){
+//            if(emails_assistants.contains(user_email)){
                 //ungoing feature
                 going.setEnabled(false);
             }
@@ -194,7 +192,7 @@ public class DetailEventFragment extends Fragment {
                 }
             }
 
-            if(interesados.contains(user_email)){
+            if(interesados.contains(user_id)){
                 //uninterested feature
                 interested.setEnabled(false);
             }
@@ -342,7 +340,7 @@ public class DetailEventFragment extends Fragment {
         Log.d("LUCSI","PRESSED ON INTERESTED, SAVING TO LOCAL DATABASE");
         try {
             ContentValues insertEvent = new ContentValues();
-            insertEvent.put("id", event.getId().replace("-","")); //save id without dash symbols because its a reserverd keyword in sql
+            insertEvent.put("id", event.getId().replace("-","")); //save id without dash symbols because its a reserved keyword in sql
 //            Log.d("LUCSI",event.getId().replace("-",""));
             insertEvent.put("nombre", event.getNombre());
             insertEvent.put("latitud", event.getLatitud());
